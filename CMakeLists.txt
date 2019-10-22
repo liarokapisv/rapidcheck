@@ -1,5 +1,5 @@
 cmake_minimum_required(VERSION 3.0)
-project(rapidcheck CXX)
+project(rapidcheck VERSION 0.1 LANGUAGES CXX)
 
 # Don't warn about symbol visibility for static libraries with CMake 3.3 and later.
 if(POLICY CMP0063)
@@ -106,7 +106,9 @@ if(RC_ENABLE_RTTI)
   add_definitions(-DRC_USE_RTTI)
 endif()
 
-add_subdirectory(ext)
+if(RC_ENABLE_TESTS)
+    add_subdirectory(ext)
+endif()
 
 if(RC_ENABLE_TESTS)
   enable_testing()
